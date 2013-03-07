@@ -1,0 +1,36 @@
+<h1>Favorite Teaching Music</h1>
+
+<%= button_to 'Enter a Favorite of Yours', new_piece_path, :method=>'get', :id=>'filter-button' %>
+<br/>
+<div id="filter-form">
+<%= form_for :piece, :url => {:controller=>'welcome', :action=>'filter'} do |p| %>
+	<table><tr>
+		<td>Difficulty: </td>
+		<% ['All','Easy','Intermediate','Advanced'].each do |d| %>
+		<td> &nbsp;&nbsp;&nbsp;<%= d %> <%= p.radio_button 'difficulty', d, :checked => @difficulty == d ? true:false%></td>
+		<% end %>
+	</tr></table>
+	<table><tr>
+		<td>Genre: </td>
+		<% ['All','Pre-Baroque','Baroque','Classical','Romantic','20th Century'].each do |g| %>
+			<td>&nbsp;&nbsp;&nbsp;<%= g %> <%= p.radio_button 'genre',  g, :checked => @genre == g ? true:false %></td>
+		<% end %>
+	</tr></table>
+	<br/>
+	<%= p.button 'Filter', :type=>'submit', :id=>'filter-button' %>
+	<br/>
+<% end %>
+</div>
+
+<h3><%= @pieces.count %> Pieces </h3>
+<div id="pieces_table">
+<table>
+	<tr><th>Title</th><th>Composer</th><th>Genre</th><th>Difficulty</th><th>Possible URL</th></tr>
+<% @pieces.each do |p| %>
+	<tr><td><%= p.title %></td><td> <%= p.composer %></td><td> <%= p.genre %></td><td> <%= p.difficulty %></td><td id='urlguess'><%= link_to 'Listen', p.link %></td></tr>
+<% end %>
+</table>
+</div>
+
+
+

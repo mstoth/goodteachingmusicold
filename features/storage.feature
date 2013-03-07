@@ -1,0 +1,35 @@
+
+Feature: storage for favorite teaching music
+
+	In order to collect a list of favorite music for students
+	This tool manages a database available to teachers
+
+Scenario: Entering a favorite piece
+	Given I am on the home page
+	When I select "Enter a Favorite of Yours"
+	Then I should see the form for entering a piece
+	When I select "Create Piece" on the form
+	Then I should see "Composer can't be blank"
+	When I fill out the form
+	And I select "Create Piece" on the form
+	Then I should see "Piece was successfully created"
+	When I click on "Back"
+	Then I should see "Favorite Teaching Music"
+	
+Scenario: Changing the Genre
+	Given I am on the home page
+	When I select 'Pre-Baroque'
+	And I click on the "Filter" button
+	Then the list should only have pre baroque music
+	And I should see a possible url
+	
+Scenario: Changing the Difficulty
+	Given I am on the home page
+	When I select 'Easy'
+	And I click on the "Filter" button
+	Then the list should only have easy music
+	
+
+	
+
+

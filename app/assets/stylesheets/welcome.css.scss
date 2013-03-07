@@ -1,0 +1,43 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+button {
+	font-size:14pt;
+}
+#pieces_table table {
+	margin-left:5%;
+	margin-right:auto;
+	width:50%;
+}
+
+#pieces_table td, th {
+	padding:2px;
+	font-size:14pt;
+}
+
+#pieces_table tr {
+	outline:solid #999;
+	margin-top:1em;
+}
+
+#filter-form {
+	margin-top:1em;
+	font-size:16pt;
+	background-color:lightgray;
+}
+
+#filter-form td {
+	font-size:14pt;
+}
+
+#filter-form table {
+	margin-left:1em;
+	margin-top:1em;
+}
+
+#filter-button {
+	font-size:14pt;
+	margin-left:1em;
+	margin-bottom:1em;
+}

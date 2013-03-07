@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :genre %><br />
-    <%= f.text_field :genre %>
+    <%= f.select :genre, ['All','Pre-Baroque','Baroque','Classical','Romantic','20th Century'] %>
   </div>
   <div class="field">
     <%= f.label :difficulty %><br />
-    <%= f.text_field :difficulty %>
+    <%= f.select :difficulty, ['All','Easy','Intermediate','Advanced'] %>
   </div>
   <div class="actions">
     <%= f.submit %>

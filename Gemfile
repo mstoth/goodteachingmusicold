@@ -6,6 +6,9 @@ gem 'rails', '3.2.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+group :test, :development do 
+  gem 'sqlite3'
+end
 
 gem 'authlogic'
 gem 'youtube_it'

@@ -25,7 +25,7 @@
 <h3><%= @pieces.count %> Pieces </h3>
 <div id="pieces_table">
 <table>
-	<tr><th>Title</th><th>Composer</th><th>Genre</th><th>Difficulty</th><th>Possible URL</th></tr>
+	<tr><th>Title</th><th>Composer</th><th>Genre</th><th>Difficulty</th><th>You Tube Search</th></tr>
 <% @pieces.each do |p| %>
 	<tr><td><%= p.title %></td><td> <%= p.composer %></td><td> <%= p.genre %></td><td> <%= p.difficulty %></td><td id='urlguess'><%= link_to 'Listen', p.link %></td></tr>
 <% end %>

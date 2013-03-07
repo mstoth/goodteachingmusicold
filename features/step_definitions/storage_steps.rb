@@ -60,3 +60,15 @@ end
 Then /^I should see a possible url$/ do
   page.should have_css("#urlguess")
 end
+
+When /^I select 'sort_by_title'$/ do
+  FactoryGirl.create :piece, :title=>'Zebra Tango', :composer=>'Joe the Plumber', :genre=>'20th Century', :difficulty=>'Easy'
+  FactoryGirl.create :piece, :title=>'Aardvark Waltz', :composer=>'Sam the Electrician', :genre=>'20th Century', :difficulty=>'Easy'
+  visit '/'
+  choose 'sort_by_Title'
+end
+
+Then /^the list should be sorted by title$/ do
+  page.should have_selector("table#piece_table tr:nth-child(2)", text: 'Aardvark Waltz')
+  page.should have_selector("table#piece_table tr:nth-child(3)", text: 'Zebra Tango')
+end

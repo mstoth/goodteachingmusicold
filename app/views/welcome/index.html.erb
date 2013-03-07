@@ -7,13 +7,19 @@
 	<table><tr>
 		<td>Difficulty: </td>
 		<% ['All','Easy','Intermediate','Advanced'].each do |d| %>
-		<td> &nbsp;&nbsp;&nbsp;<%= d %> <%= p.radio_button 'difficulty', d, :checked => @difficulty == d ? true:false%></td>
+		<td><%= p.radio_button 'difficulty', d, :checked => @difficulty == d ? true:false%><%= d %></td>
 		<% end %>
 	</tr></table>
 	<table><tr>
 		<td>Genre: </td>
 		<% ['All','Pre-Baroque','Baroque','Classical','Romantic','20th Century'].each do |g| %>
-			<td>&nbsp;&nbsp;&nbsp;<%= g %> <%= p.radio_button 'genre',  g, :checked => @genre == g ? true:false %></td>
+			<td><%= p.radio_button 'genre',  g, :checked => @genre == g ? true:false %><%= g %></td>
+		<% end %>
+	</tr></table>
+	<table><tr>
+		<td>Sort By: </td>
+		<% ['Title','Composer', 'Genre', 'Difficulty'].each do |g| %>
+			<td><%= radio_button_tag 'sort_by',  g , @sort_by == g ? true:false %><%= g%></td>
 		<% end %>
 	</tr></table>
 	<br/>
@@ -24,10 +30,10 @@
 
 <h3><%= @pieces.count %> Pieces </h3>
 <div id="pieces_table">
-<table>
+<table id = 'piece_table'>
 	<tr><th>Title</th><th>Composer</th><th>Genre</th><th>Difficulty</th><th>You Tube Search</th></tr>
 <% @pieces.each do |p| %>
-	<tr><td><%= p.title %></td><td> <%= p.composer %></td><td> <%= p.genre %></td><td> <%= p.difficulty %></td><td id='urlguess'><%= link_to 'Listen', p.link %></td></tr>
+	<tr><td id='piece_title'><%= p.title %></td><td id='piece_composer'> <%= p.composer %></td><td> <%= p.genre %></td><td> <%= p.difficulty %></td><td id='urlguess'><%= link_to 'Listen', p.link %></td></tr>
 <% end %>
 </table>
 </div>

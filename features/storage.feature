@@ -29,7 +29,12 @@ Scenario: Changing the Difficulty
 	And I click on the "Filter" button
 	Then the list should only have easy music
 	
-
+Scenario: Sorting the list
+	Given I am on the home page
+	When I select 'sort_by_title'
+	And I click on the "Filter" button
+	Then the list should be sorted by title
+	
 	
 
 

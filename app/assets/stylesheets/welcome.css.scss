@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+h1,h2,h3 {
+	text-align:center;
+}
+
+.button_to {
+	margin-left:10%;
+	margin-right:auto;
+}
 button {
 	font-size:14pt;
 }
@@ -21,15 +29,21 @@ button {
 	margin-top:1em;
 }
 
+table#piece_table tr:nth-child(odd) { background:lightgreen; }
+
 #filter-form {
 	margin-top:1em;
-	font-size:16pt;
-	background-color:lightgray;
+	width:80%;
+	text-align:left;
+	margin-left:10%;
+	margin-right:auto;
+	font-size:14pt;
+	background-color:lightgreen;
 }
 
 #filter-form td {
 	font-size:14pt;
-	width:10em;
+	width:8em;
 }
 
 #filter-form table {

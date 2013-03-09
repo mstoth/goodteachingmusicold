@@ -19,20 +19,20 @@ Scenario: Entering a favorite piece
 Scenario: Changing the Genre
 	Given I am on the home page
 	When I select 'Pre-Baroque'
-	And I click on the "Filter" button
+	And I click on the "Update Table" button
 	Then the list should only have pre baroque music
 	And I should see a possible url
 	
 Scenario: Changing the Difficulty
 	Given I am on the home page
 	When I select 'Easy'
-	And I click on the "Filter" button
+	And I click on the "Update Table" button
 	Then the list should only have easy music
 	
 Scenario: Sorting the list
 	Given I am on the home page
 	When I select 'sort_by_title'
-	And I click on the "Filter" button
+	And I click on the "Update Table" button
 	Then the list should be sorted by title
 	
 Scenario: Entering a new piece

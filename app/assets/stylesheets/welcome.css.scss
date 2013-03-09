@@ -37,6 +37,9 @@ button {
 table#piece_table tr:nth-child(odd) { background:lightgreen; }
 
 #filter-form {
+	border:solid;
+	border-color:green;
+	border-width:5px;
 	margin-top:1em;
 	width:80%;
 	text-align:left;

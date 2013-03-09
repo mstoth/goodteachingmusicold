@@ -31,7 +31,7 @@
 <h3><%= @pieces.count %> Pieces </h3>
 <div id="pieces_table">
 <table id = 'piece_table'>
-	<tr><th>Title</th><th></th><th>Composer</th><th>Genre</th><th>Difficulty</th><th>You Tube Search</th></tr>
+	<tr><th>Title</th><th></th><th>Composer</th><th>Genre</th><th>Difficulty</th><th>Recording</th></tr>
 <% @pieces.each do |p| %>
 	<tr><td id='piece_title'><%= p.title %></td><td><%= link_to 'Edit',edit_piece_path(p), :id=>'edit_link' %></td><td id='piece_composer'> <%= p.composer %></td><td> <%= p.genre %></td><td> <%= p.difficulty %></td><td id='urlguess'><%= link_to 'Listen', p.link %></td></tr>
 <% end %>

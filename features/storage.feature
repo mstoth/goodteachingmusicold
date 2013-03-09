@@ -60,4 +60,12 @@ Scenario: Adding a piece that already exists
 	And I click on the "Create" button
 	Then I should see "Piece must be unique"
 
+Scenario: Adding a piece with an URL for the recording
+	Given I am on the home page
+	And I click on the "Enter a Favorite of Yours" button
+	And I fill in the edit page with a URL
+	And I click on the "Create" button
+	And I click on "Back"
+	Then the url link will not be the You Tube search result
+	
 

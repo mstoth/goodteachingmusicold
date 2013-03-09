@@ -4,22 +4,23 @@ class Piece < ActiveRecord::Base
   require 'youtube_it'
   require 'cgi'
   
-  attr_accessible :composer, :genre, :title, :difficulty
+  attr_accessible :composer, :genre, :title, :difficulty, :recording
   validates :composer, :title, :presence => true
   
   def link
-    if @saved_link.nil? 
+    if self.recording.nil? || self.recording == ""
       client = YouTubeIt::Client.new(:dev_key => "AIzaSyCnWDwzfm_x45frJJU7p28mC8EqT8qeWmI")
       result = client.videos_by(:query => self.title + ' by ' + self.composer, :max_results => 1)
       videos = result.videos
       if videos.count > 0
-        @saved_link = CGI.escapeHTML videos.first.player_url
-        return @saved_link
+        self.recording = CGI.escapeHTML videos.first.player_url
+        self.save
+        return self.recording
       else
         return nil
       end
     else
-      return @saved_link
+      return self.recording
     end
   end
   

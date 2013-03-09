@@ -6,6 +6,7 @@
     <th>Composer</th>
     <th>Genre</th>
     <th>Difficulty</th>
+	<th>Recording</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +18,7 @@
     <td><%= piece.composer %></td>
     <td><%= piece.genre %></td>
     <td><%= piece.difficulty %></td>
+	<td><%= piece.recording %></td>
     <td><%= link_to 'Show', piece %></td>
     <td><%= link_to 'Edit', edit_piece_path(piece) %></td>
     <td><%= link_to 'Destroy', piece, method: :delete, data: { confirm: 'Are you sure?' } %></td>

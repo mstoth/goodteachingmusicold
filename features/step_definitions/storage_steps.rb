@@ -104,3 +104,13 @@ Given /^I enter the same piece$/ do
   select 'Easy', :from => 'piece_difficulty'
 end
 
+Given /^I fill in the edit page with a URL$/ do
+  fill_in 'Title', :with => 'Prelude'
+  fill_in 'Composer', :with => 'J. S. Bach'
+  fill_in 'Recording', :with => 'Recording URL'
+end
+
+Then /^the url link will not be the You Tube search result$/ do
+  page.find("#urlguess a")[:href].should include 'Recording URL'
+end
+

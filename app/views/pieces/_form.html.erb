@@ -27,6 +27,10 @@
     <%= f.label :difficulty %><br />
     <%= f.select :difficulty, ['Easy','Intermediate','Advanced'] %>
   </div>
+  <div class="field">
+    <%= f.label :recording %><br />
+    <%= f.text_field :recording %> Leave blank if you don't have a URL for a recording.
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,6 +1,6 @@
 Given /^I am on the home page$/ do
   visit '/'
-  page.should have_content("Favorite Teaching Music")
+  page.should have_content("Favorite Piano Teaching Music")
 end
 
 When /^I select "(.*?)"$/ do |arg1|
@@ -71,4 +71,13 @@ end
 Then /^the list should be sorted by title$/ do
   page.should have_selector("table#piece_table tr:nth-child(2)", text: 'Aardvark Waltz')
   page.should have_selector("table#piece_table tr:nth-child(3)", text: 'Zebra Tango')
+end
+
+Then /^I should see the new piece form$/ do
+  page.should have_css(".new_piece")
+end
+
+When /^I fill out the new piece form$/ do
+  fill_in('Title', :with=>'Prelude')
+  fill_in('Composer', :with=>'J. S. Bach')
 end

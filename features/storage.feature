@@ -14,7 +14,7 @@ Scenario: Entering a favorite piece
 	And I select "Create Piece" on the form
 	Then I should see "Piece was successfully created"
 	When I click on "Back"
-	Then I should see "Favorite Teaching Music"
+	Then I should see "Favorite Piano Teaching Music"
 	
 Scenario: Changing the Genre
 	Given I am on the home page
@@ -35,6 +35,13 @@ Scenario: Sorting the list
 	And I click on the "Filter" button
 	Then the list should be sorted by title
 	
+Scenario: Entering a new piece
+	Given I am on the home page
+	When I click on the "Enter a Favorite of Yours" button
+	Then I should see the new piece form
+	When I fill out the new piece form
+	And I click on the "Create Piece" button
+	Then I should see "Piece was successfully created"
 	
 
 

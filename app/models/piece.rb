@@ -1,5 +1,5 @@
 class Piece < ActiveRecord::Base
-  validate :must_be_unique
+  validate :must_be_unique, :on=>:create
   
   require 'youtube_it'
   require 'cgi'

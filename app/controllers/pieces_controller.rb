@@ -1,7 +1,5 @@
 class PiecesController < ApplicationController
-  
-  
-  
+    
   # GET /pieces
   # GET /pieces.json
   def index
@@ -84,3 +82,4 @@ class PiecesController < ApplicationController
     end
   end
 end
+

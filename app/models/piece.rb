@@ -1,4 +1,6 @@
 class Piece < ActiveRecord::Base
+  validate :must_be_unique
+  
   require 'youtube_it'
   require 'cgi'
   
@@ -18,6 +20,12 @@ class Piece < ActiveRecord::Base
       end
     else
       return @saved_link
+    end
+  end
+  
+  def must_be_unique
+    if self.class.where(title: title, composer: composer).exists?
+      errors.add(:base, 'Piece must be unique')
     end
   end
   

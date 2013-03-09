@@ -96,3 +96,11 @@ When /^I fill in the edit page$/ do
   fill_in "Title", :with=>'Prelude'
   fill_in 'Composer', :with=>"J. S. Bach" 
 end
+
+Given /^I enter the same piece$/ do
+  fill_in 'Title', :with=>'Prelude'
+  fill_in 'Composer', :with => 'Bach'
+  select 'Baroque', :from=>'piece_genre'
+  select 'Easy', :from => 'piece_difficulty'
+end
+

@@ -43,5 +43,14 @@ Scenario: Entering a new piece
 	And I click on the "Create Piece" button
 	Then I should see "Piece was successfully created"
 	
+Scenario: Editing an existing piece
+	Given I am on the home page
+	And a piece exists in the database
+	When I click on "Edit"
+	Then I should see the edit page
+	When I fill in the edit page
+	And I click on the "Update" button
+	Then I should see "Piece was successfully updated"
+	
 
 

@@ -81,3 +81,18 @@ When /^I fill out the new piece form$/ do
   fill_in('Title', :with=>'Prelude')
   fill_in('Composer', :with=>'J. S. Bach')
 end
+
+Given /^a piece exists in the database$/ do
+  FactoryGirl.create :piece, :title=>'Prelude', :composer => 'Bach', :genre=>'Baroque', :difficulty=>'Easy'
+  visit '/'
+  page.should have_css("#edit_link")
+end
+
+Then /^I should see the edit page$/ do
+  page.should have_content("Editing piece")
+end
+
+When /^I fill in the edit page$/ do
+  fill_in "Title", :with=>'Prelude'
+  fill_in 'Composer', :with=>"J. S. Bach" 
+end

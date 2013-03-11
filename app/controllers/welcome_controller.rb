@@ -1,44 +1,62 @@
 class WelcomeController < ApplicationController
 
   def index
-    @pieces = Piece.find(:all, :order=>:title)
     @difficulty = 'All'
     @genre = 'All'
     @sort_by = 'Title'
+    @instrument = 'Piano'
+    @pieces = Piece.where(:instrument=>'Piano')
   end
 
   def filter
     @genre = params[:piece][:genre]
     @sort_by = params[:sort_by]
     @difficulty = params[:piece][:difficulty]
-
-    if @genre == 'All'
-      if @difficulty == 'All'
-        @pieces = Piece.find(:all, :order => 'title')
-      else
-        @pieces = Piece.where(:difficulty => @difficulty)
-      end    
-    else
-      if @difficulty == 'All'
-        @pieces = Piece.where(:genre=>@genre)
-      else
-        @pieces = Piece.where(:genre=>@genre, :difficulty => @difficulty)
-      end
-    end
-
+    @instrument = params[:piece][:instrument]
+    
+    # first get all the pieces by the specific instrument
+    @pieces = Piece.where(:instrument=>@instrument)
+    
+    # sort
     case @sort_by
     when 'Title'
-      @pieces.sort!{|a,b| a.title <=> b.title}
+      @pieces.sort! {|a,b| a.title <=> b.title }
     when 'Composer'
-      @pieces.sort!{|a,b| a.composer <=> b.composer}
+      @pieces.sort! {|a,b| a.composer <=> b.composer }
     when 'Genre'
-      @pieces.sort!{|a,b| a.genre <=> b.genre}
+      @pieces.sort! {|a,b| a.genre <=> b.genre }
     when 'Difficulty'
-      @pieces.sort!{|a,b| a.difficulty <=> b.difficulty}
+      @pieces.sort! {|a,b| a.difficulty <=> b.difficulty }
     else
       puts 'error'
     end
-
+    
+    # prune array with selections
+    # 
+    # if not all are wanted then process
+    if @genre != 'All' or @difficulty != 'All'
+      # filter genre and difficulty
+      to_remove = []
+      
+      if @genre != 'All'
+        @pieces.each do |p|
+          if p.genre != @genre 
+            to_remove << p
+          end
+        end
+      end
+      
+      if @difficulty != 'All'
+        @pieces.each do |p|
+          if p.difficulty != @difficulty 
+            to_remove << p
+          end
+        end
+      end
+    
+      @pieces -= to_remove
+    end
+    
     render :index
   end
 

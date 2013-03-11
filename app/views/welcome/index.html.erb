@@ -1,27 +1,32 @@
-<h1>Favorite Piano Teaching Music</h1>
+<h1>Favorite <%= @instrument %> Teaching Music</h1>
 
 <%= button_to 'Enter a Favorite of Yours', new_piece_path, :method=>'get', :id=>'filter-button' %>
 <br/>
 <div id="filter-form">
 <%= form_for :piece, :url => {:controller=>'welcome', :action=>'filter'} do |p| %>
 	<table><tr>
-		<td>Difficulty: </td>
+		<td><b>Difficulty:</b> </td>
 		<% ['All','Easy','Intermediate','Advanced'].each do |d| %>
 		<td><%= p.radio_button 'difficulty', d, :checked => @difficulty == d ? true:false%><%= d %></td>
 		<% end %>
 	</tr></table>
 	<table><tr>
-		<td>Genre: </td>
+		<td><b>Genre:</b> </td>
 		<% ['All','Pre-Baroque','Baroque','Classical','Romantic','20th Century'].each do |g| %>
 			<td><%= p.radio_button 'genre',  g, :checked => @genre == g ? true:false %><%= g %></td>
 		<% end %>
 	</tr></table>
 	<table><tr>
-		<td>Sort By: </td>
+		<td><b>Sort By:</b> </td>
 		<% ['Title','Composer', 'Genre', 'Difficulty'].each do |g| %>
 			<td><%= radio_button_tag 'sort_by',  g , @sort_by == g ? true:false %><%= g%></td>
 		<% end %>
 	</tr></table>
+	<table><tr>
+		<td><b>Instrument:</b> </td>
+		<td>
+		<%= p.select :instrument, ['Piano','Voice', 'Violin', 'Viola', 'Cello', 'Bass', 'Trumpet', 'Trombone','French Horn','Tuba', 'Oboe','English Horn','Bassoon', 'Flute/Piccolo', 'Percussion'], {:selected => @instrument}  %>
+	</td></tr></table>
 	<br/>
 	<%= p.button 'Update Table', :type=>'submit', :id=>'filter-button' %>
 	<br/>

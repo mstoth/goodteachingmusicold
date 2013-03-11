@@ -68,4 +68,10 @@ Scenario: Adding a piece with an URL for the recording
 	And I click on "Back"
 	Then the url link will not be the You Tube search result
 	
-
+Scenario: Changing Instrument
+	Given I am on the home page
+	And I select a new instrument
+	And I click on the "Update Table" button
+	Then I should see only music for that instrument
+	
+	

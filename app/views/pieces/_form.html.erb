@@ -1,4 +1,4 @@
-<%= form_for(@piece) do |f| %>
+<%= semantic_form_for(@piece) do |f| %>
   <% if @piece.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@piece.errors.count, "error") %> prohibited this piece from being saved:</h2>
@@ -11,27 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %> Be as specific as you can. Include Opus if you know it. 
-  </div>
-  <div class="field">
-    <%= f.label :composer %><br />
-    <%= f.text_field :composer %>
-  </div>
-  <div class="field">
-    <%= f.label :genre %><br />
-    <%= f.select :genre, ['Pre-Baroque','Baroque','Classical','Romantic','20th Century'] %>
-  </div>
-  <div class="field">
-    <%= f.label :difficulty %><br />
-    <%= f.select :difficulty, ['Easy','Intermediate','Advanced'] %>
-  </div>
-  <div class="field">
-    <%= f.label :recording %><br />
-    <%= f.text_field :recording %> Leave blank if you don't have a URL for a recording.
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+ <p> Be as specific as you can. Include Opus if you know it. </p>
+    <%= f.input :title %> 
+<br/>
+    <%= f.input :composer %>
+
+  <%= f.input :instrument, :as => :select, :collection => ['Piano','Voice', 'Violin', 'Viola', 'Cello', 'Bass', 'Trumpet', 'Trombone','French Horn','Tuba', 'Oboe','English Horn','Bassoon', 'Flute/Piccolo', 'Percussion'], :include_blank=>false %>
+
+  <%= f.input :genre, :as => :select, :collection => ['Pre-Baroque','Baroque','Classical','Romantic','20th Century'], :include_blank => false %>
+  <%= f.input :difficulty, :as => :select, :collection => ['Easy','Intermediate','Advanced'], :include_blank => false %>
+
+  <p>Leave blank if you don't have a URL for a recording.</p>
+    <%= f.input :recording, :required=>false %> 
+
+    <%= f.action :submit, :as => :button %>
 <% end %>

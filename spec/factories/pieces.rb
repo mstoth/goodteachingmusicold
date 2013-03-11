@@ -5,5 +5,7 @@ FactoryGirl.define do
     title "Prelude"
     composer "Bach"
     genre "Baroque"
+    difficulty "Easy"
+    instrument "Piano"
   end
 end

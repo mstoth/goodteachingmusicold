@@ -25,6 +25,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'formtastic'
+
 group :development, :test do
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false

@@ -32,17 +32,13 @@ Given /^a piece has been created$/ do
   FactoryGirl.create :piece, :title=>"Prelude", :composer=>"Bach"
 end
 
-Then /^I should see the list of pieces$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
 When /^I select 'Pre\-Baroque'$/ do
-  FactoryGirl.create :piece, :title=>"piece title", :composer=>"Monteverdi", :genre=>"Pre-Baroque"
+  FactoryGirl.create :piece, :title=>"piece title", :composer=>"Monteverdi", :genre=>"Pre-Baroque", :difficulty => 'Easy', :instrument=>'Piano'
   choose "piece_genre_pre-baroque"
 end
 
 Then /^the list should only have pre baroque music$/ do
-  page.should have_content("Monteverdi")
+  page.find("#piece_composer").should have_content("Monteverdi")
 end
 
 When /^I click on the "(.*?)" button$/ do |arg1|
@@ -62,8 +58,8 @@ Then /^I should see a possible url$/ do
 end
 
 When /^I select 'sort_by_title'$/ do
-  FactoryGirl.create :piece, :title=>'Zebra Tango', :composer=>'Joe the Plumber', :genre=>'20th Century', :difficulty=>'Easy'
-  FactoryGirl.create :piece, :title=>'Aardvark Waltz', :composer=>'Sam the Electrician', :genre=>'20th Century', :difficulty=>'Easy'
+  FactoryGirl.create :piece, :title=>'Zebra Tango', :composer=>'Joe the Plumber', :genre=>'20th Century', :difficulty=>'Easy', :instrument=>'Piano'
+  FactoryGirl.create :piece, :title=>'Aardvark Waltz', :composer=>'Sam the Electrician', :genre=>'20th Century', :difficulty=>'Easy', :instrument=>'Piano'
   visit '/'
   choose 'sort_by_Title'
 end
@@ -74,7 +70,7 @@ Then /^the list should be sorted by title$/ do
 end
 
 Then /^I should see the new piece form$/ do
-  page.should have_css(".new_piece")
+  page.should have_css("#new_piece")
 end
 
 When /^I fill out the new piece form$/ do
@@ -83,7 +79,7 @@ When /^I fill out the new piece form$/ do
 end
 
 Given /^a piece exists in the database$/ do
-  FactoryGirl.create :piece, :title=>'Prelude', :composer => 'Bach', :genre=>'Baroque', :difficulty=>'Easy'
+  FactoryGirl.create :piece, :title=>'Prelude', :composer => 'Bach', :genre=>'Baroque', :difficulty=>'Easy', :instrument=>'Piano'
   visit '/'
   page.should have_css("#edit_link")
 end
@@ -114,3 +110,12 @@ Then /^the url link will not be the You Tube search result$/ do
   page.find("#urlguess a")[:href].should include 'Recording URL'
 end
 
+Given /^I select a new instrument$/ do
+  FactoryGirl.create :piece, :title=>'Prelude', :composer => 'Bach', :genre=>'Baroque', :difficulty=>'Easy', :instrument => 'Piano'
+  select 'Voice'
+  click_button 'Update Table'
+end
+
+Then /^I should see only music for that instrument$/ do
+  page.should_not have_selector("table#piece_table tr:nth-child(2)", text: 'Prelude')
+end

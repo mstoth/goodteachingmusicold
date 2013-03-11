@@ -53,11 +53,20 @@ table#piece_table tr:nth-child(odd) { background:lightgreen; }
 	background-color:lightgreen;
 }
 
+.button_to {
+    width: 20em;
+    margin-left:auto;
+	margin-right:auto;
+}
+
 #filter-form td {
 	font-size:14pt;
 	width:8em;
 }
 
+#filter-form td:nth-child(2) {
+	width:4em;
+}
 #filter-form table {
 	margin-left:1em;
 	margin-top:1em;

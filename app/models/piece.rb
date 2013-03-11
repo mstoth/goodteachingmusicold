@@ -10,7 +10,7 @@ class Piece < ActiveRecord::Base
   def link
     if self.recording.nil? || self.recording == ""
       client = YouTubeIt::Client.new(:dev_key => "AIzaSyCnWDwzfm_x45frJJU7p28mC8EqT8qeWmI")
-      result = client.videos_by(:query => self.title + ' by ' + self.composer, :max_results => 1)
+      result = client.videos_by(:query => self.title + ' by ' + self.composer + ' for ' + self.instrument, :max_results => 1)
       videos = result.videos
       if videos.count > 0
         self.recording = CGI.escapeHTML videos.first.player_url

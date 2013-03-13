@@ -8,6 +8,7 @@ class PiecesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @pieces }
+      format.xml { render xml: @pieces }
     end
   end
 

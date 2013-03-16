@@ -47,7 +47,11 @@ class PiecesController < ApplicationController
   # POST /pieces.json
   def create
     @piece = Piece.new(params[:piece])
-
+    if !params["mobile"].nil? 
+      @mobile = true
+    else
+      @mobile = false
+    end
     respond_to do |format|
       if @piece.save
         format.html { redirect_to @piece, notice: 'Piece was successfully created.' }

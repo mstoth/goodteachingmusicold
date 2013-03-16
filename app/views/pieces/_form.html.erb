@@ -45,9 +45,8 @@
     </div>
   <% end %>
 
- <p> Be as specific as you can. Include Opus if you know it. </p>
  <div class="field">
-   <%= f.label :title %><br />
+   <%= f.label :title %>(Be as specific as you can. Include Opus if you know it.)<br />
    <%= f.text_field :title %>
  </div>
 <div class="field">
@@ -64,9 +63,8 @@
 <div class="field">
   <%= f.select "difficulty", options_for_select(['Easy','Intermediate','Advanced']) %>
 </div>
-  <p>Leave blank if you don't have a URL for a recording.</p>
 <div class="field">
-  <%= f.label :recording %><br />
+  <%= f.label :recording %>(Leave blank if you don't have a URL for a recording.)<br />
   <%= f.text_field :recording %>
 </div>
 

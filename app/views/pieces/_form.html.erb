@@ -1,4 +1,9 @@
+
+<% if @mobile %>
+<%= semantic_form_for(@piece, :style=>"width:100%") do |f| %>
+<% else %>
 <%= semantic_form_for(@piece) do |f| %>
+<% end %>
   <% if @piece.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@piece.errors.count, "error") %> prohibited this piece from being saved:</h2>

@@ -27,7 +27,11 @@ class PiecesController < ApplicationController
   # GET /pieces/new.json
   def new
     @piece = Piece.new
-
+    if !params["mobile"].nil? 
+      @mobile = true
+    else
+      @mobile = false
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @piece }

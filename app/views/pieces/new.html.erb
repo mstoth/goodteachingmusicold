@@ -1,5 +1,9 @@
+<% if @mobile %>
+<h1 style="text-align:left">New piece</h1>
+<% else %>
 <h1>New piece</h1>
-
+<% end %>
 <%= render 'form' %>
-
+<% if !@mobile %>
 <%= link_to 'Back', '/' %>
+<% end %>

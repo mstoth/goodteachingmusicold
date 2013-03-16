@@ -1,5 +1,5 @@
-
-<%= semantic_form_for(@piece, @mobile?':style=>"width:100%; margin-left:0"':'') do |f| %>
+<% if !@mobile %>
+<%= semantic_form_for(@piece) do |f| %>
   <% if @piece.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@piece.errors.count, "error") %> prohibited this piece from being saved:</h2>
@@ -26,4 +26,52 @@
     <%= f.input :recording, :required=>false %> 
 
     <%= f.action :submit, :as => :button %>
+<% end %>
+
+<% else %>
+
+<%= form_for(@piece, :style=>"width:100%; margin-left:0") do |f| %>
+  <% if @piece.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@piece.errors.count, "error") %> prohibited this piece from being saved:</h2>
+
+      <ul>
+      <% @piece.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <p> Be as specific as you can. Include Opus if you know it. </p>
+ <div class="field">
+   <%= f.label :title %><br />
+   <%= f.text_field :title %>
+ </div>
+<br/>
+<div class="field">
+  <%= f.label :composer %><br />
+  <%= f.text_field :composer %>
+</div>
+
+<div class="field">
+  <%= f.select  "instrument", options_for_select(['Piano','Voice', 'Violin', 'Viola', 'Cello', 'Bass', 'Trumpet', 'Trombone','French Horn','Tuba', 'Oboe','English Horn','Bassoon', 'Flute/Piccolo', 'Percussion']) %>
+</div>
+<div class="field">
+  <%= f.select  "genre", options_for_select(['Pre-Baroque','Baroque','Classical','Romantic','20th Century']) %>
+</div>
+<div class="field">
+  <%= f.select "difficulty", options_for_select(['Easy','Intermediate','Advanced']) %>
+</div>
+  <p>Leave blank if you don't have a URL for a recording.</p>
+<div class="field">
+  <%= f.label :recording %><br />
+  <%= f.text_field :recording %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
+
 <% end %>

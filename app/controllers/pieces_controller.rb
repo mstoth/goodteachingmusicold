@@ -3,8 +3,12 @@ class PiecesController < ApplicationController
   # GET /pieces
   # GET /pieces.json
   def index
-    @pieces = Piece.all
-
+    if !params['instrument'].nil?
+      @pieces = Piece.where(:instrument=>params['instrument'])
+    else
+      @pieces = Piece.all
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @pieces }

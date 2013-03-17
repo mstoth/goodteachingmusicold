@@ -55,13 +55,13 @@
 </div>
 
 <div class="field">
-  <%= f.select  "instrument", options_for_select(['Piano','Voice', 'Violin', 'Viola', 'Cello', 'Bass', 'Trumpet', 'Trombone','French Horn','Tuba', 'Oboe','English Horn','Bassoon', 'Flute/Piccolo', 'Percussion']) %> Select your instrument
+  <%= f.select  "instrument", options_for_select(['Piano','Voice', 'Violin', 'Viola', 'Cello', 'Bass', 'Trumpet', 'Trombone','French Horn','Tuba', 'Oboe','English Horn','Bassoon', 'Flute/Piccolo', 'Percussion']) %> <big>Instrument</big>
 </div>
 <div class="field">
-  <%= f.select  "genre", options_for_select(['Pre-Baroque','Baroque','Classical','Romantic','20th Century']) %> Pick genre
+  <%= f.select  "genre", options_for_select(['Pre-Baroque','Baroque','Classical','Romantic','20th Century']) %> <big>Genre</big>
 </div>
 <div class="field">
-  <%= f.select "difficulty", options_for_select(['Easy','Intermediate','Advanced']) %> Difficulty
+  <%= f.select "difficulty", options_for_select(['Easy','Intermediate','Advanced']) %> <big>Difficulty</big>
 </div>
 <div class="field">
   <%= f.label :recording %>(Leave blank if you don't have a URL for a recording.)<br />

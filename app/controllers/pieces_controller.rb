@@ -65,7 +65,7 @@ class PiecesController < ApplicationController
           format.html { render action: 'new' }
         end
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", notice: 'Piece was successfully created.' }
         format.json { render json: @piece.errors, status: :unprocessable_entity }
       end
     end

@@ -62,6 +62,7 @@ class PiecesController < ApplicationController
           format.html { redirect_to @piece, notice: 'Piece was successfully created.' }
           format.json { render json: @piece, status: :created, location: @piece }
         else
+          url = @piece.link
           format.html { redirect_to '/pieces/new?mobile=yes', notice: 'Piece was successfully created' }
         end
       else

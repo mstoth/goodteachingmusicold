@@ -58,8 +58,12 @@ class PiecesController < ApplicationController
     end
     respond_to do |format|
       if @piece.save
-        format.html { redirect_to @piece, notice: 'Piece was successfully created.' }
-        format.json { render json: @piece, status: :created, location: @piece }
+        if !@mobile
+          format.html { redirect_to @piece, notice: 'Piece was successfully created.' }
+          format.json { render json: @piece, status: :created, location: @piece }
+        else
+          format.html { render action: 'new' }
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @piece.errors, status: :unprocessable_entity }

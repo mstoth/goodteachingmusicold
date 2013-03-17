@@ -62,7 +62,7 @@ class PiecesController < ApplicationController
           format.html { redirect_to @piece, notice: 'Piece was successfully created.' }
           format.json { render json: @piece, status: :created, location: @piece }
         else
-          format.html { redirect_to '/pieces/new?remote=yes', flash: 'Piece was successfully created' }
+          format.html { redirect_to '/pieces/new?remote=yes', notice: 'Piece was successfully created' }
         end
       else
         format.html { render action: "new", notice: 'Piece was successfully created.' }

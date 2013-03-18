@@ -76,6 +76,7 @@ table#piece_table tr:nth-child(odd) { background:lightgreen; }
 #filter-form td {
 	font-size:14pt;
 	width:8em;
+	white-space:nowrap;
 }
 
 #filter-form td:nth-child(2) {

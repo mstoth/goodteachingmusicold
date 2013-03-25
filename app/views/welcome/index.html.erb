@@ -30,9 +30,14 @@
 	<br/>
 	<%= p.button 'Update Table', :type=>'submit', :id=>'filter-button' %>
 	<br/>
+	<div id="filter-button">
+		<p style="font-size:14pt">
+		Note: Recordings are created by searching YouTube for title and composer. Not always the best of all choices however.  Be sure to check the related links in the YouTube page for other examples. </p>
+		</div>
+	
 <% end %>
-</div>
 
+</div>
 <h3><%= @pieces.count %> Pieces </h3>
 <div id="pieces_table">
 <table id = 'piece_table'>

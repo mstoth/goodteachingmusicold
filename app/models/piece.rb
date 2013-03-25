@@ -4,7 +4,7 @@ class Piece < ActiveRecord::Base
   require 'youtube_it'
   require 'cgi'
   
-  attr_accessible :composer, :genre, :title, :difficulty, :recording, :instrument
+  attr_accessible :composer, :genre, :title, :difficulty, :recording, :instrument, :comment
   validates :composer, :title, :presence => true
   
   def link

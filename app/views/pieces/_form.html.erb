@@ -21,7 +21,8 @@
 
   <%= f.input :genre, :as => :select, :collection => ['Pre-Baroque','Baroque','Classical','Romantic','20th Century'], :include_blank => false %>
   <%= f.input :difficulty, :as => :select, :collection => ['Easy','Intermediate','Advanced'], :include_blank => false %>
-
+<p> (Optionally leave a comment if you have particular reasons for liking the piece.) </p>
+  <%= f.input :comment %>
   <p>Leave blank if you don't have a URL for a recording.</p>
     <%= f.input :recording, :required=>false %> 
 
@@ -64,8 +65,12 @@
   <%= f.select "difficulty", options_for_select(['Easy','Intermediate','Advanced']) %> <big>Difficulty</big>
 </div>
 <div class="field">
-  <%= f.label :recording %>(Leave blank if you don't have a URL for a recording.)<br />
+  <%= f.label :recording %> (Leave blank if you don't have a URL for a recording.)<br />
   <%= f.text_field :recording %>
+</div>
+<div class="field">
+  <%= f.label :comment %> (Optionally leave a comment if you have particular reasons for liking the piece.) <br />
+  <%= f.text_field :comment %>
 </div>
 
 <div class="actions">

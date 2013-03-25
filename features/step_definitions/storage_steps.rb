@@ -76,6 +76,7 @@ end
 When /^I fill out the new piece form$/ do
   fill_in('Title', :with=>'Prelude')
   fill_in('Composer', :with=>'J. S. Bach')
+  fill_in('Comment', :with=>'All Bach is good.')
 end
 
 Given /^a piece exists in the database$/ do

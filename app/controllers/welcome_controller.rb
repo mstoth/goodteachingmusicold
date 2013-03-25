@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
     @genre = 'All'
     @sort_by = 'Title'
     @instrument = 'Piano'
-    @pieces = Piece.where(:instrument=>'Piano')
+    @pieces = Piece.where(:instrument=>'Piano').sort! {|a,b| a.title <=> b.title }
   end
 
   def filter

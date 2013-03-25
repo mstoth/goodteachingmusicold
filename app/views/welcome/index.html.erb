@@ -4,6 +4,7 @@
 <br/>
 <div id="filter-form">
 <%= form_for :piece, :url => {:controller=>'welcome', :action=>'filter'} do |p| %>
+
 	<table><tr>
 		<td><b>Difficulty:</b> </td>
 		<% ['All','Easy','Intermediate','Advanced'].each do |d| %>
@@ -30,7 +31,7 @@
 	<br/>
 	<%= p.button 'Update Table', :type=>'submit', :id=>'filter-button' %>
 	<br/>
-	<div id="filter-button">
+	<div id="note">
 		<p style="font-size:14pt">
 		Note: Recordings are created by searching YouTube for title and composer. Not always the best of all choices however.  Be sure to check the related links in the YouTube page for other examples. </p>
 		</div>
@@ -41,9 +42,12 @@
 <h3><%= @pieces.count %> Pieces </h3>
 <div id="pieces_table">
 <table id = 'piece_table'>
-	<tr><th>Title</th><th></th><th>Composer</th><th>Genre</th><th>Difficulty</th><th>Recording</th></tr>
+	<tr><th>Title (Mouse over title to see comment.)</th><th></th><th>Composer</th><th>Genre</th><th>Difficulty</th><th>Recording</th></tr>
 <% @pieces.each do |p| %>
-	<tr><td id='piece_title'><%= p.title %></td><td><%= link_to 'Edit',edit_piece_path(p), :id=>'edit_link' %></td><td id='piece_composer'> <%= p.composer %></td><td> <%= p.genre %></td><td> <%= p.difficulty %></td><td id='urlguess'><% if p.link.nil? %>None Found<% else %><%= link_to 'Listen', p.link, :target => '_top' %><% end %></td></tr>
+	<tr>
+		<%= hidden_field_tag "comment", p.comment, {:id => "comment", :comment=>p.comment} %>
+		
+		<td id='piece_title'><%= p.title %></td><td><%= link_to 'Edit',edit_piece_path(p), :id=>'edit_link' %></td><td id='piece_composer'> <%= p.composer %></td><td> <%= p.genre %></td><td> <%= p.difficulty %></td><td id='urlguess'><% if p.link.nil? %>None Found<% else %><%= link_to 'Listen', p.link, :target => '_top' %><% end %></td></tr>
 <% end %>
 </table>
 </div>

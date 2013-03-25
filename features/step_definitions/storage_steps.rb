@@ -34,7 +34,7 @@ end
 
 When /^I select 'Pre\-Baroque'$/ do
   FactoryGirl.create :piece, :title=>"piece title", :composer=>"Monteverdi", :genre=>"Pre-Baroque", :difficulty => 'Easy', :instrument=>'Piano'
-  choose "piece_genre_pre-baroque"
+  select "Pre-Baroque", :from => 'piece_genre'
 end
 
 Then /^the list should only have pre baroque music$/ do

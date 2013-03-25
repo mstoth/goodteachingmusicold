@@ -13,21 +13,22 @@
 	</tr></table>
 	<table><tr>
 		<td><b>Genre:</b> </td>
-		<% ['All','Pre-Baroque','Baroque','Classical','Romantic','20th Century'].each do |g| %>
-			<td><%= p.radio_button 'genre',  g, :checked => @genre == g ? true:false %><%= g %></td>
-		<% end %>
-	</tr></table>
-	<table><tr>
-		<td><b>Sort By:</b> </td>
-		<% ['Title','Composer', 'Genre', 'Difficulty'].each do |g| %>
-			<td><%= radio_button_tag 'sort_by',  g , @sort_by == g ? true:false %><%= g%></td>
-		<% end %>
+		
+		<td>
+			<%= p.select :genre, ['All','Pre-Baroque','Baroque','Classical','Romantic','Impressionistic','Jazz','20th Century','21st Century'], {:selected=>@genre} %>			
+		</td>
 	</tr></table>
 	<table><tr>
 		<td><b>Instrument:</b> </td>
 		<td>
 		<%= p.select :instrument, ['Piano','Voice', 'Violin', 'Viola', 'Cello', 'Bass', 'Trumpet', 'Trombone','French Horn','Tuba', 'Oboe','English Horn','Bassoon', 'Flute/Piccolo', 'Percussion'	], {:selected => @instrument}  %>
 	</td></tr></table>
+	<table><tr>
+		<td><b>Sort By:</b> </td>
+		<% ['Title','Composer', 'Genre', 'Difficulty'].each do |g| %>
+			<td><%= radio_button_tag 'sort_by',  g , @sort_by == g ? true:false %><%= g%></td>
+		<% end %>
+	</tr></table>
 	<br/>
 	<%= p.button 'Update Table', :type=>'submit', :id=>'filter-button' %>
 	<br/>

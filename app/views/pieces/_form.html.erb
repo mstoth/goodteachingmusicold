@@ -20,7 +20,7 @@
 
   <%= f.input :instrument, :as => :select, :collection => ['Piano','Voice', 'Violin', 'Viola', 'Cello', 'Bass', 'Trumpet', 'Trombone','French Horn','Tuba', 'Oboe','English Horn','Bassoon', 'Flute/Piccolo', 'Percussion'], :include_blank=>false %>
 
-  <%= f.input :genre, :as => :select, :collection => ['Pre-Baroque','Baroque','Classical','Romantic','20th Century'], :include_blank => false %>
+  <%= f.input :genre, :as => :select, :collection =>['All','Pre-Baroque','Baroque','Classical','Romantic','Impressionistic','Jazz','20th Century','21st Century'], :include_blank => false %>
   <%= f.input :difficulty, :as => :select, :collection => ['Easy','Intermediate','Advanced'], :include_blank => false %>
 <p> (Optionally leave a comment if you have particular reasons for liking the piece.) </p>
   <%= f.input :comment %>
@@ -60,7 +60,7 @@
   <%= f.select  "instrument", options_for_select(['Piano','Voice', 'Violin', 'Viola', 'Cello', 'Bass', 'Trumpet', 'Trombone','French Horn','Tuba', 'Oboe','English Horn','Bassoon', 'Flute/Piccolo', 'Percussion']) %> <big>Instrument</big>
 </div>
 <div class="field">
-  <%= f.select  "genre", options_for_select(['Pre-Baroque','Baroque','Classical','Romantic','20th Century']) %> <big>Genre</big>
+  <%= f.select  "genre", options_for_select(['All','Pre-Baroque','Baroque','Classical','Romantic','Impressionistic','Jazz','20th Century','21st Century']) %> <big>Genre</big>
 </div>
 <div class="field">
   <%= f.select "difficulty", options_for_select(['Easy','Intermediate','Advanced']) %> <big>Difficulty</big>

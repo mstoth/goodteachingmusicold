@@ -13,7 +13,9 @@
     </div>
   <% end %>
 
- <p> Be as specific as you can. Include Opus if you know it. </p>
+(Don't just say 'Prelude in C'. Give enough information to find the correct piece.)<br/>
+Be as specific as you can. Include Opus if you know it.
+<br/><br/>
     <%= f.input :title %> 
 <br/>
     <%= f.input :composer %>
@@ -48,8 +50,10 @@
   <% end %>
 <p id="notice"><%= notice %></p>
  <div class="field">
-   <%= f.label :title %>(Be as specific as you can. Include Opus if you know it.)<br />
-   <%= f.text_field :title %>
+   <%= f.label :title %>
+(Be as specific as you can. Include Opus if you know it.)<br />
+   <%= f.text_field :title %><br/>
+(Don't just say 'Prelude in C'. Give enough information to find the correct piece.)
  </div>
 <div class="field">
   <%= f.label :composer %><br />

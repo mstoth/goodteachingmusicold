@@ -5,7 +5,7 @@
 
 
 $ ->
-	$("td[id='piece_title']").hover -> 
+	$("td[id='piece_title']").click -> 
 		temp = $(this).html()
 		$(this).html($(this).parent().find("#comment").val())
 		$(this).closest('tr').find("#comment").val(temp)

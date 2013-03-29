@@ -48,7 +48,7 @@
 	<tr>
 		<%= hidden_field_tag "comment", p.comment, {:id => "comment", :comment=>p.comment} %>
 		
-		<td id='piece_title'><%= p.title %></td><td><%= link_to 'Edit',edit_piece_path(p), :id=>'edit_link' %></td><td id='piece_composer'> <%= p.composer %></td><td> <%= p.genre %></td><td> <%= p.difficulty %></td><td id='urlguess'><% if p.link.nil? %>None Found<% else %><%= link_to 'Listen', p.link, :target => '_top' %><% end %></td></tr>
+		<td id='piece_title'><%= p.title %></td><td><%= link_to 'Edit',edit_piece_path(p), :id=>'edit_link' %></td><td nowrap="nowrap", id='piece_composer'> <%= p.composer %></td><td nowrap="nowrap"> <%= p.genre %></td><td> <%= p.difficulty %></td><td id='urlguess'><% if p.link.nil? %>None Found<% else %><%= link_to 'Listen', p.link, :target => '_top' %><% end %></td></tr>
 <% end %>
 </table>
 </div>

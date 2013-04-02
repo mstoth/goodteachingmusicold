@@ -37,6 +37,9 @@ class PiecesController < ApplicationController
     if !params["composer"].nil?
       @piece.composer = params['composer']
     end
+    if !params["instrument"].nil?
+      @piece.instrument = params['instrument']
+    end
     if !params["genre"].nil? 
       @piece.genre = params['genre']
     end

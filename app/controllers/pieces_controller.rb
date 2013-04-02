@@ -31,6 +31,15 @@ class PiecesController < ApplicationController
   # GET /pieces/new.json
   def new
     @piece = Piece.new
+    if !params["title"].nil?
+      @piece.title = params['title']
+    end
+    if !params["composer"].nil?
+      @piece.composer = params['composer']
+    end
+    if !params["genre"].nil? 
+      @piece.genre = params['genre']
+    end
     if !params["mobile"].nil? 
       @mobile = true
     else

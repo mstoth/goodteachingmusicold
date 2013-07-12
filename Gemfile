@@ -6,7 +6,6 @@ gem 'rails', '3.2.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'sqlite3'
 gem 'authlogic'
 gem 'youtube_it'
 
@@ -25,6 +24,7 @@ end
 gem 'formtastic'
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'webrat'
   gem 'rspec-rails', '~> 2.13.0'
   gem 'factory_girl_rails', '~> 4.2.1'

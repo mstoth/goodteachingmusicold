@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325051115) do
+ActiveRecord::Schema.define(:version => 20130705222830) do
 
   create_table "pieces", :force => true do |t|
     t.string   "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20130325051115) do
     t.string   "recording"
     t.string   "instrument"
     t.string   "comment"
+    t.string   "sheet"
   end
 
   create_table "users", :force => true do |t|

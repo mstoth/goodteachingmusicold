@@ -1,11 +1,19 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
   factory :piece do
-    title "Prelude"
+    title { Faker::Name.last_name }
     composer "Bach"
-    genre "Baroque"
-    difficulty "Easy"
-    instrument "Piano"
   end
+  
+  factory :message do
+    title { Faker::Name.name }
+    composer { Faker::Name.name }
+    message { Faker::Lorem.paragraph }
+    
+    factory :invalid_message do
+      title nil
+    end
+  end
+  
 end

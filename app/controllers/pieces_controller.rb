@@ -31,18 +31,10 @@ class PiecesController < ApplicationController
   # GET /pieces/new.json
   def new
     @piece = Piece.new
-    if !params["title"].nil?
-      @piece.title = params['title']
-    end
-    if !params["composer"].nil?
-      @piece.composer = params['composer']
-    end
-    if !params["instrument"].nil?
-      @piece.instrument = params['instrument']
-    end
-    if !params["genre"].nil? 
-      @piece.genre = params['genre']
-    end
+    @piece.title = params['title'] unless params['title'].nil?
+    @piece.composer = params['composer'] unless params["composer"].nil?
+    @piece.instrument = params['instrument'] unless params["instrument"].nil?
+    @piece.genre = params['genre'] unless params["genre"].nil?
     if !params["mobile"].nil? 
       @mobile = true
     else
@@ -71,7 +63,7 @@ class PiecesController < ApplicationController
     respond_to do |format|
       if @piece.save
         if !@mobile
-          format.html { redirect_to @piece, notice: 'Piece was successfully created.' }
+          format.html { redirect_to root_url, notice: 'Piece was successfully created.' }
           format.json { render json: @piece, status: :created, location: @piece }
         else
           url = @piece.link

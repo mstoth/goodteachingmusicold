@@ -13,8 +13,7 @@ Scenario: Entering a favorite piece
 	When I fill out the form
 	And I select "Create Piece" on the form
 	Then I should see "Piece was successfully created"
-	When I click on "Back"
-	Then I should see "Favorite Piano Teaching Music"
+	And I should see "Favorite Piano Teaching Music"
 	
 Scenario: Changing the Genre
 	Given I am on the home page
@@ -65,7 +64,6 @@ Scenario: Adding a piece with an URL for the recording
 	And I click on the "Enter a Favorite of Yours" button
 	And I fill in the edit page with a URL
 	And I click on the "Create" button
-	And I click on "Back"
 	Then the url link will not be the You Tube search result
 	
 Scenario: Changing Instrument

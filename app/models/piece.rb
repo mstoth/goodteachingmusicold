@@ -1,10 +1,11 @@
 class Piece < ActiveRecord::Base
   validate :must_be_unique, :on=>:create
+  validates :title, :uniqueness => {:scope => :composer}
   
   require 'youtube_it'
   require 'cgi'
   
-  attr_accessible :composer, :genre, :title, :difficulty, :recording, :instrument, :comment
+  attr_accessible :composer, :genre, :title, :difficulty, :recording, :instrument, :comment, :sheet
   validates :composer, :title, :presence => true
   
   def link
@@ -23,6 +24,11 @@ class Piece < ActiveRecord::Base
       return self.recording
     end
   end
+  
+  def self.by_letter(letter)
+    where("title LIKE ?", "#{letter}%").order(:title)
+  end
+  
   
   def must_be_unique
     if self.class.where(title: title, composer: composer).exists?

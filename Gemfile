@@ -6,10 +6,7 @@ gem 'rails', '3.2.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-group :test, :development do 
-  gem 'sqlite3'
-end
-
+gem 'sqlite3'
 gem 'authlogic'
 gem 'youtube_it'
 
@@ -28,12 +25,17 @@ end
 gem 'formtastic'
 
 group :development, :test do
-  gem 'database_cleaner'
-  gem 'cucumber-rails', :require => false
-  gem 'capybara'
   gem 'webrat'
-  gem 'factory_girl_rails'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.13.0'
+  gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'cucumber-rails', :require => false
+end
+
+group :test do
+  gem 'faker', '~> 1.1.2'
+  gem 'capybara', '~> 2.0.2'
+  gem 'database_cleaner', '~> 0.9.1'
+  gem 'launchy', '~> 2.2.0'
 end
 
 gem 'jquery-rails'

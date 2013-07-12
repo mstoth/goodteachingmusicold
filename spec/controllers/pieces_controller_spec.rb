@@ -1,127 +1,102 @@
 require 'spec_helper'
 
 describe PiecesController do
-
-  def mock_piece(stubs={})
-    (@mock_piece ||= mock_model(Piece).as_null_object).tap do |piece|
-      piece.stub(stubs) unless stubs.empty?
-    end
-  end
-
-  describe "GET index" do
-    it "assigns all pieces as @pieces" do
-      Piece.stub(:all) { [mock_piece] }
+  
+  describe "GET #index" do
+    it "populates an array of pieces" do
+      piece = create(:piece)
       get :index
-      assigns(:pieces).should eq([mock_piece])
+      expect(assigns(:pieces)).to match_array [piece]
+    end
+    it "renders the :index view" do
+      get :index
+      expect(response).to render_template :index
     end
   end
-
-  describe "GET show" do
-    it "assigns the requested piece as @piece" do
-      Piece.stub(:find).with("37") { mock_piece }
-      get :show, :id => "37"
-      assigns(:piece).should be(mock_piece)
+  
+  describe "Get #show" do
+    it 'assigns the requested piece to @piece' do
+      piece = create(:piece)
+      get :show, id: piece
+      expect(assigns(:piece)).to eq piece
+    end
+    it 'renders the :show template' do
+      piece = create(:piece)
+      get :show, id: piece
+      expect(response).to render_template(:show)
     end
   end
-
-  describe "GET new" do
-    it "assigns a new piece as @piece" do
-      Piece.stub(:new) { mock_piece }
+  
+  describe "Get #new" do
+    it "assigns a new piece to @piece" do
       get :new
-      assigns(:piece).should be(mock_piece)
+      expect(assigns(:piece)).to be_a_new(Piece)
+    end
+    it "renders the :new template" do
+      get :new
+      expect(response).to render_template :new
     end
   end
-
-  describe "GET edit" do
-    it "assigns the requested piece as @piece" do
-      Piece.stub(:find).with("37") { mock_piece }
-      get :edit, :id => "37"
-      assigns(:piece).should be(mock_piece)
+  
+  describe 'GET #edit' do
+    it 'assigns the requested piece to @piece' do
+      piece = create(:piece)
+      get :edit, id: piece
+      expect(assigns(:piece)).to eq piece
+    end
+    it 'renders the :edit template' do
+      piece = create(:piece)
+      get :edit, id: piece
+      expect(response).to render_template :edit 
     end
   end
-
-  describe "POST create" do
-
-    describe "with valid params" do
-      it "assigns a newly created piece as @piece" do
-        Piece.stub(:new).with({'these' => 'params'}) { mock_piece(:save => true) }
-        post :create, :piece => {'these' => 'params'}
-        assigns(:piece).should be(mock_piece)
+  
+  describe 'POST #create' do
+    context 'with valid attributes' do
+      it 'saves the new piece in the database' do
+        expect{
+          post :create, piece: attributes_for(:piece)
+        }.to change(Piece, :count).by(1)
       end
-
-      it "redirects to the created piece" do
-        Piece.stub(:new) { mock_piece(:save => true) }
-        post :create, :piece => {}
-        response.should redirect_to(piece_url(mock_piece))
+      
+      it 'redirects to the home page' do
+        post :create, piece: attributes_for(:piece)
+        expect(response).to redirect_to root_url
       end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved piece as @piece" do
-        Piece.stub(:new).with({'these' => 'params'}) { mock_piece(:save => false) }
-        post :create, :piece => {'these' => 'params'}
-        assigns(:piece).should be(mock_piece)
-      end
-
-      it "re-renders the 'new' template" do
-        Piece.stub(:new) { mock_piece(:save => false) }
-        post :create, :piece => {}
-        response.should render_template("new")
-      end
-    end
-
-  end
-
-  describe "PUT update" do
-
-    describe "with valid params" do
-      it "updates the requested piece" do
-        Piece.should_receive(:find).with("37") { mock_piece }
-        mock_piece.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :piece => {'these' => 'params'}
-      end
-
-      it "assigns the requested piece as @piece" do
-        Piece.stub(:find) { mock_piece(:update_attributes => true) }
-        put :update, :id => "1"
-        assigns(:piece).should be(mock_piece)
-      end
-
-      it "redirects to the piece" do
-        Piece.stub(:find) { mock_piece(:update_attributes => true) }
-        put :update, :id => "1"
-        response.should redirect_to(piece_url(mock_piece))
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the piece as @piece" do
-        Piece.stub(:find) { mock_piece(:update_attributes => false) }
-        put :update, :id => "1"
-        assigns(:piece).should be(mock_piece)
-      end
-
-      it "re-renders the 'edit' template" do
-        Piece.stub(:find) { mock_piece(:update_attributes => false) }
-        put :update, :id => "1"
-        response.should render_template("edit")
-      end
-    end
-
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested piece" do
-      Piece.should_receive(:find).with("37") { mock_piece }
-      mock_piece.should_receive(:destroy)
-      delete :destroy, :id => "37"
-    end
-
-    it "redirects to the pieces list" do
-      Piece.stub(:find) { mock_piece }
-      delete :destroy, :id => "1"
-      response.should redirect_to(pieces_url)
     end
   end
-
+  
+  describe 'DELETE #destroy' do
+    it 'removes the piece from the database' do
+      @piece = create(:piece)
+      expect{
+        delete :destroy, id: @piece
+      }.to change(Piece, :count).by(-1)
+    end
+  end
+  
+  describe 'PUT #update' do
+    before :each do
+      @piece = create(:piece)
+    end
+    
+    it "locates the requested @piece" do
+      put :update, id: @piece, piece: attributes_for(:piece)
+      expect(assigns(:piece)).to eq(@piece)
+    end
+    
+    context "valid attributes" do
+      it "changes @piece's attributes" do
+        put :update, id: @piece, piece: attributes_for(:piece, title: "Prelude") 
+        @piece.reload
+        expect(@piece.title).to eq("Prelude")
+      end
+      
+      it "redirects to the updated piece" do
+        put :update, id: @piece, piece: attributes_for(:piece)
+        expect(response).to redirect_to @piece
+      end
+    end
+  end
+  
 end

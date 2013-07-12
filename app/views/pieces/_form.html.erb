@@ -22,13 +22,19 @@ Be as specific as you can. Include Opus if you know it.
 
   <%= f.input :instrument, :as => :select, :collection => ['Piano','Voice', 'Violin', 'Viola', 'Cello', 'Bass', 'Trumpet', 'Trombone','French Horn','Tuba', 'Oboe','English Horn','Bassoon', 'Flute/Piccolo', 'Percussion'], :include_blank=>false %>
 
-  <%= f.input :genre, :as => :select, :collection =>['All','Pre-Baroque','Baroque','Classical','Romantic','Impressionistic','Jazz','20th Century','21st Century'], :include_blank => false %>
+  <%= f.input :genre, :as => :select, :collection =>['Pre-Baroque','Baroque','Classical','Romantic','Impressionistic','Jazz','20th Century','21st Century'], :include_blank => false %>
   <%= f.input :difficulty, :as => :select, :collection => ['Easy','Intermediate','Advanced'], :include_blank => false %>
-<p> (Optionally leave a comment if you have particular reasons for liking the piece.) </p>
-  <%= f.input :comment %>
-  <p>Leave blank if you don't have a URL for a recording.</p>
-    <%= f.input :recording, :required=>false %> 
 
+  <%= f.label "Optionally leave a comment if you have particular reasons for liking the piece." %>
+  <%= f.input :comment %>
+
+  <%= f.label "Leave blank if you don't have a URL for a recording." %>
+    <%= f.input :recording, :required=>false %> 
+	
+		<%= f.label "Sheet Music is optional." %><br/>
+		<%= f.label "Add a URL which points to the PDF file if you have one." %>
+		<%= f.input :sheet, :required=>false %>
+	
     <%= f.action :submit, :as => :button %>
 <% end %>
 
@@ -73,11 +79,14 @@ Be as specific as you can. Include Opus if you know it.
   <%= f.label :recording %> (Leave blank if you don't have a URL for a recording.)<br />
   <%= f.text_field :recording %>
 </div>
+<div class='field'>
+	<%= f.label 'Sheet Music' %> (Optional, add a URL to the PDF file if you have one.) <br/>
+	<%= f.text_field :sheet %>
+</div>
 <div class="field">
   <%= f.label :comment %> (Optionally leave a comment if you have particular reasons for liking the piece.) <br />
   <%= f.text_field :comment %>
 </div>
-
 <div class="actions">
   <%= f.submit %>
 </div>

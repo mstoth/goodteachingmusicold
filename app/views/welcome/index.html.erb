@@ -1,4 +1,5 @@
 <h1>Favorite <%= @instrument %> Teaching Music</h1>
+<p id="notice"><%= notice %></p>
 
 <%= button_to 'Enter a Favorite of Yours', new_piece_path, :method=>'get', :id=>'filter-button' %>
 <br/>
@@ -52,8 +53,14 @@
 <% @pieces.each do |p| %>
 	<tr>
 		<%= hidden_field_tag "comment", p.comment, {:id => "comment", :comment=>p.comment} %>
+		<td id='piece_title'><%= p.title %></td>
+		<td><%= link_to 'Edit',edit_piece_path(p), :id=>'edit_link' %></td>
+		<td nowrap="nowrap", id='piece_composer'> <%= p.composer %></td><td nowrap="nowrap"> <%= p.genre %></td>
+		<td> <%= p.difficulty %></td>
+		<td id='urlguess'><% if p.link.nil? %>None Found<% else %><%= link_to 'Listen', p.link, :target => '_top' %><% end %></td>
+		<td> id='sheet_music'><% if p.sheet.nil? %>None<% else %><%= link_to 'View', p.sheet, :target => '_top' %> <% end %> </td>
 		
-		<td id='piece_title'><%= p.title %></td><td><%= link_to 'Edit',edit_piece_path(p), :id=>'edit_link' %></td><td nowrap="nowrap", id='piece_composer'> <%= p.composer %></td><td nowrap="nowrap"> <%= p.genre %></td><td> <%= p.difficulty %></td><td id='urlguess'><% if p.link.nil? %>None Found<% else %><%= link_to 'Listen', p.link, :target => '_top' %><% end %></td></tr>
+	</tr>
 <% end %>
 </table>
 </div>

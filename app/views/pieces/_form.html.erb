@@ -20,7 +20,7 @@ Be as specific as you can. Include Opus if you know it.
 <br/>
     <%= f.input :composer %>
 
-  <%= f.input :instrument, :as => :select, :collection => ['Piano','Voice', 'Violin', 'Viola', 'Cello', 'Bass', 'Trumpet', 'Trombone','French Horn','Tuba', 'Oboe','English Horn','Bassoon', 'Flute/Piccolo', 'Percussion'], :include_blank=>false %>
+  <%= f.input :instrument, :as => :select, :collection => ['Piano','Voice', 'Violin', 'Viola', 'Cello', 'Bass', 'Guitar', 'Trumpet', 'Trombone','French Horn','Tuba', 'Oboe','English Horn','Bassoon', 'Flute/Piccolo', 'Percussion'], :include_blank=>false %>
 
   <%= f.input :genre, :as => :select, :collection =>['Pre-Baroque','Baroque','Classical','Romantic','Impressionistic','Jazz','20th Century','21st Century'], :include_blank => false %>
   <%= f.input :difficulty, :as => :select, :collection => ['Easy','Intermediate','Advanced'], :include_blank => false %>
@@ -67,7 +67,7 @@ Be as specific as you can. Include Opus if you know it.
 </div>
 
 <div class="field">
-  <%= f.select  :instrument, options_for_select(['Piano','Voice', 'Violin', 'Viola', 'Cello', 'Bass', 'Trumpet', 'Trombone','French Horn','Tuba', 'Oboe','English Horn','Bassoon', 'Flute/Piccolo', 'Percussion']) %> <big>Instrument</big>
+  <%= f.select  :instrument, options_for_select(['Piano','Voice', 'Violin', 'Viola', 'Cello', 'Bass', 'Guitar', 'Trumpet', 'Trombone','French Horn','Tuba', 'Oboe','English Horn','Bassoon', 'Flute/Piccolo', 'Percussion']) %> <big>Instrument</big>
 </div>
 <div class="field">
   <%= f.select  :genre, options_for_select(['All','Pre-Baroque','Baroque','Classical','Romantic','Impressionistic','Jazz','20th Century','21st Century']) %> <big>Genre</big>

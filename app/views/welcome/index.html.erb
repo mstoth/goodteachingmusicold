@@ -58,7 +58,7 @@
 		<td nowrap="nowrap", id='piece_composer'> <%= p.composer %></td><td nowrap="nowrap"> <%= p.genre %></td>
 		<td> <%= p.difficulty %></td>
 		<td id='urlguess'><% if p.link.nil? %>None Found<% else %><%= link_to 'Listen', p.link, :target => '_top' %><% end %></td>
-		<td id='sheet_music'><% if p.sheet.nil? %>None<% else %><%= link_to 'View', p.sheet, :target => '_top' %> <% end %> </td>
+		<td id='sheet_music'><% if (p.sheet.nil? || p.sheet == '') %>None<% else %><%= link_to 'View', p.sheet, :target => '_top' %> <% end %> </td>
 		
 	</tr>
 <% end %>

@@ -3,10 +3,17 @@ class PiecesController < ApplicationController
   # GET /pieces
   # GET /pieces.json
   def index
-    if !params['instrument'].nil?
-      @pieces = Piece.where(:instrument=>params['instrument'])
+    
+    if !params['sort_by'].nil?
+      @sortBy=params['sort_by']
     else
-      @pieces = Piece.all
+      @sortBy='Title'
+    end
+    
+    if !params['instrument'].nil?
+      @pieces = Piece.order(@sortBy).where(:instrument=>params['instrument'])
+    else
+      @pieces = Piece.order(@sortBy)
     end
     
     respond_to do |format|

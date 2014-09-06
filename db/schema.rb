@@ -11,28 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130705222830) do
+ActiveRecord::Schema.define(:version => 20140822070352) do
 
   create_table "pieces", :force => true do |t|
     t.string   "title"
     t.string   "composer"
     t.string   "genre"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "difficulty"
     t.string   "recording"
     t.string   "instrument"
     t.string   "comment"
     t.string   "sheet"
+    t.boolean  "approved",   :default => false
   end
 
   create_table "users", :force => true do |t|
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "welcomes", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

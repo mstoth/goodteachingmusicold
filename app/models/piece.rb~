@@ -1,22 +1,14 @@
 class Piece < ActiveRecord::Base
 
   validate :must_be_unique, :on=>:create
-
   validates :title, :uniqueness => {:scope => :composer}
-
-#   after_initialize :init
-
+  
   require 'youtube_it'
   require 'cgi'
   
   attr_accessible :composer, :genre, :title, :difficulty, :recording, :instrument, :comment, :sheet
   validates :composer, :title, :presence => true
-
-
-  def init
-    self.approved = false
-  end
-
+  
   def link
     if self.recording.nil? || self.recording == ""
       client = YouTubeIt::Client.new(:dev_key => "AIzaSyCnWDwzfm_x45frJJU7p28mC8EqT8qeWmI")
@@ -38,7 +30,7 @@ class Piece < ActiveRecord::Base
     where("title LIKE ?", "#{letter}%").order(:title)
   end
   
-
+  
   def must_be_unique
     if self.class.where(title: title, composer: composer).exists?
       errors.add(:base, 'Piece must be unique')

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>The following piece, <%= @piece.title %> by <%= @piece.composer %> has been submitted.</h1>
+    <table><tr><td>
+    <a href='http://goodteachingmusic.com/pieces/<%= @piece.id %>/approve'>Approve</a></td><td>
+    <%= link_to 'Destroy', @piece, method: :delete, data: { confirm: 'Are you sure?' } %></td></tr></table>
+  </body>
+</html>

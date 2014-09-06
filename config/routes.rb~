@@ -7,8 +7,6 @@ Favmusic::Application.routes.draw do
   post '/welcome/change_genre'
   post '/welcome/filter'
 
-  #  post '/pieces/:id/approve'
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -19,7 +17,7 @@ Favmusic::Application.routes.draw do
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   #   match '/pieces/unapproved'  => 'pieces#unapproved', :as => :unapproved
-    match '/pieces/:id/approve' => 'pieces#approve', :as => :approve, :via => "post"
+    match '/pieces/:id/approve' => 'pieces#approve', :as => :approve_piece
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):

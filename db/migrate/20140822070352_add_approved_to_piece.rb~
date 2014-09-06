@@ -1,0 +1,5 @@
+class AddApprovedToPiece < ActiveRecord::Migration
+  def change
+    add_column :pieces, :approved, :boolean
+  end
+end

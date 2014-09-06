@@ -4,7 +4,6 @@ class CreatePieces < ActiveRecord::Migration
       t.string :title
       t.string :composer
       t.string :genre
-
       t.timestamps
     end
   end

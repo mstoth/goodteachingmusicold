@@ -69,7 +69,7 @@ end
 Then /^the list should be sorted by title$/ do
   pending
 #  page.should have_selector("tr",:text=>"Aardvark Waltz")
-#  puts page.html
+puts page.html
 #  page.should have_selector("table#piece_table tr:nth-child(2) td#piece_title", text:"Aardvark Waltz")
 #  page.should have_selector("table#piece_table tr:nth-child(1)", text: 'Aardvark Waltz')
 #  page.should have_selector("table#piece_table tr:nth-child(2)", text: 'Zebra Tango')
@@ -145,4 +145,5 @@ end
 Then /^I should see the piece listed$/ do
   page.should have_content("Prelude")
 end
+
 

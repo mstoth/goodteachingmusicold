@@ -5,8 +5,6 @@ describe PiecesController do
   describe "GET #index" do
     it "populates an array of pieces" do
       piece = create(:piece)
-      piece.approved = true
-      piece.save
       get :index
       expect(assigns(:pieces)).to match_array [piece]
     end

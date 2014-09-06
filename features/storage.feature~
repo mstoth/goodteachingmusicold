@@ -47,7 +47,6 @@ Scenario: Approving a piece
 	Then I should see the piece listed
 	When I click on "Approve"
 	Then I should see "Piece is now approved." 
-	And I should see the piece listed
 	
 Scenario: Editing an existing piece
 	Given I am on the home page

@@ -6,7 +6,7 @@
   <body>
     <h1>The following piece, <%= @piece.title %> by <%= @piece.composer %> has been submitted.</h1>
     <table><tr><td>
-    <%= link_to 'Approve', approve_piece_path(@piece), method: :post  %></td><td>
+    <%= link_to 'Approve', approve_path(piece), method: :post %></td><td>
     <%= link_to 'Destroy', @piece, method: :delete, data: { confirm: 'Are you sure?' } %></td></tr></table>
   </body>
 </html>

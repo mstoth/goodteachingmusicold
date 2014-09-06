@@ -22,7 +22,7 @@
 	<td><%= piece.recording %></td>
     <td><%= link_to 'Show', piece %></td>
     <td><%= link_to 'Edit', edit_piece_path(piece) %></td>
-    <td><%= link_to 'Approve', approve_piece_path(piece), method: :post %></td>
+    <td><%= link_to 'Approve', approve_url(piece), method: :post %></td>
     <td><%= link_to 'Destroy', piece, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

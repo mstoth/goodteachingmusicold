@@ -51,19 +51,6 @@ Favmusic::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.delivery_method = :smtp
-
-  config.action_mailer.smtp_settings = {
-    :address => "smtpout.secureserver.net",
-    :from => "michael@virtualpianist.com",
-    :port => 3535,
-    :domain => "godaddy.com",
-    :authentication => :login,
-    :user_name => "michael@virtualpianist.com",
-    :password => "ArchDukeTr1o",
-    :enable_starttls_auto => true
-  }
-
   # Enable threaded mode
   # config.threadsafe!
 

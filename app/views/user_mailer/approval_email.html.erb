@@ -5,8 +5,17 @@
   </head>
   <body>
     <h1>The following piece, <%= @piece.title %> by <%= @piece.composer %> has been submitted.</h1>
-    <table><tr><td>
-    <%= link_to 'Approve', approve_path(@piece), method: :post %></td><td>
+    <table>
+	<tr><td>Title</td><td> <%= @piece.title %> </td></tr>
+	<tr><td>Composer</td><td> <%= @piece.composer %></td></tr>
+	<tr><td>Genre</td><td> <%= @piece.genre %></td></tr>
+	<tr><td>Difficulty</td><td> <%= @piece.difficulty %></td></tr>
+	<tr><td>Instrument</td><td> <%= @piece.instrument %></td></tr>
+	<tr><td>Recording</td><td> <%= @piece.recording %></td></tr>
+	<tr><td>Comment</td><td> <%= @piece.comment %></td></tr>
+	<tr><td>Sheet Music</td><td> <%= @piece.sheet %></td></tr>
+	<tr><td></td><td></td></tr>
+    	<tr><td><%= link_to 'Approve', approve_path(@piece), method: :post %></td><td>
     <%= link_to 'Destroy', @piece, method: :delete, data: { confirm: 'Are you sure?' } %></td></tr></table>
   </body>
 </html>

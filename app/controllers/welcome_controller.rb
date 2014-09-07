@@ -15,7 +15,7 @@ class WelcomeController < ApplicationController
     @instrument = params[:piece][:instrument]
     
     # first get all the pieces by the specific instrument
-    @pieces = Piece.where(:instrument=>@instrument)
+    @pieces = Piece.where({:instrument=>@instrument, :approved=>true})
     
     # sort
     case @sort_by

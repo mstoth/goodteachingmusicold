@@ -11,6 +11,10 @@ Then /^I should see the form for entering a piece$/ do
   page.should have_content("New piece")
 end
 
+Then(/^I should not see an Edit button$/) do
+  page.should_not have_content("Edit")
+end
+
 When /^I select "(.*?)" on the form$/ do |arg1|
   click_button(arg1)
 end
@@ -67,12 +71,9 @@ When /^I select 'sort_by_title'$/ do
 end
 
 Then /^the list should be sorted by title$/ do
-  pending
-#  page.should have_selector("tr",:text=>"Aardvark Waltz")
-#  puts page.html
-#  page.should have_selector("table#piece_table tr:nth-child(2) td#piece_title", text:"Aardvark Waltz")
-#  page.should have_selector("table#piece_table tr:nth-child(1)", text: 'Aardvark Waltz')
-#  page.should have_selector("table#piece_table tr:nth-child(2)", text: 'Zebra Tango')
+
+  page.should have_selector("table#piece_table tr:nth-child(2) td#piece_title", text:"Aardvark Waltz")
+  page.should have_selector("table#piece_table tr:nth-child(3)", text: 'Zebra Tango')
 end
 
 Then /^I should not see the piece displayed$/ do

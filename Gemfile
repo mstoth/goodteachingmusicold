@@ -32,6 +32,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'shoulda'
   gem 'faker', '~> 1.1.2'
   gem 'capybara', '~> 2.0.2'
   gem 'database_cleaner', '~> 0.9.1'

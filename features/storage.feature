@@ -48,23 +48,8 @@ Scenario: Approving a piece
 	When I click on "Approve"
 	Then I should see "Piece is now approved." 
 	And I should see the piece listed
+	And I should not see an Edit button
 	
-Scenario: Editing an existing piece
-	Given I am on the home page
-	And a piece exists in the database
-	When I click on the first "Edit"
-	Then I should see the edit page
-	When I fill in the edit page
-	And I click on the "Update" button
-	Then I should see "Piece was successfully updated"
-	
-Scenario: Adding a piece that already exists
-	Given I am on the home page
-	And a piece exists in the database
-	And I click on the "Enter a Favorite of Yours" button
-	And I enter the same piece
-	And I click on the "Create" button
-	Then I should see "Piece must be unique"
 
 Scenario: Changing Instrument
 	Given I am on the home page

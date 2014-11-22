@@ -49,7 +49,7 @@
 <h3><%= @pieces.count %> Pieces </h3>
 <div id="pieces_table">
 <table id = 'piece_table'>
-	<tr><th>Title (Mouse over title to see comment.)</th><th></th><th>Composer</th><th>Genre</th><th>Difficulty</th><th>Recording</th><th>Sheet Music</th></tr>
+	<tr><th>Title (Mouse over title to see comment.)</th><th>Composer</th><th>Genre</th><th>Difficulty</th><th>Recording</th><th>Sheet Music</th></tr>
 <% @pieces.each do |p| %>
 	<tr>
 		<%= hidden_field_tag "comment", p.comment, {:id => "comment", :comment=>p.comment} %>
